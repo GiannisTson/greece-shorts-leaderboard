@@ -1,11 +1,14 @@
 from collections import defaultdict
 
 file_path = "weekly_shorts.txt"
+max_points_file = "max_points.txt"
 
 week_wins = defaultdict(int)
 map_wins = defaultdict(int)
 top5 = defaultdict(int)
+max_points = {}  # Max Points metric
 
+# ---------- Parse weekly data ----------
 with open(file_path, "r", encoding="utf-8") as f:
     lines = [line.strip() for line in f if line.strip()]
 
@@ -19,7 +22,6 @@ for line in lines:
 
     # Map placements
     elif line[0].isdigit() and "." in line:
-
         position, player = line.split(".", 1)
         position = int(position)
         player = player.strip()
@@ -31,11 +33,22 @@ for line in lines:
         if position == 1:
             map_wins[player] += 1
 
-
 players = set(list(week_wins.keys()) + list(map_wins.keys()) + list(top5.keys()))
 
-print("\nLEADERBOARD\n")
+# ---------- Read Max Points from separate file ----------
+with open(max_points_file, "r", encoding="utf-8") as f:
+    for line in f:
+        line = line.strip()
+        if not line:
+            continue
+        parts = line.split()
+        if len(parts) >= 2:
+            player = parts[0]
+            points = int(parts[1])
+            max_points[player] = points
 
+# ---------- Console leaderboard ----------
+print("\nLEADERBOARD\n")
 ranking = sorted(
     players,
     key=lambda p: (week_wins[p], map_wins[p], top5[p]),
@@ -54,24 +67,19 @@ for i, p in enumerate(ranking, start=1):
         f"{top5[p]:<6}"
     )
 
-
-# ---------- RANKINGS ----------
-
+# ---------- Rankings ----------
 def print_ranking(title, stat_dict):
-
     print(f"\n{title}")
     print("-" * 30)
-
     ranking = sorted(stat_dict.items(), key=lambda x: x[1], reverse=True)
-
     for i, (player, value) in enumerate(ranking, start=1):
         print(f"{i:2}. {player:15} {value}")
-
 
 print_ranking("WEEKLY WINNERS RANKING", week_wins)
 print_ranking("MAP WINS RANKING", map_wins)
 print_ranking("TOP5 APPEARANCES RANKING", top5)
 
+# ---------- HTML leaderboard with Max Points ----------
 html = """
 <!DOCTYPE html>
 <html>
@@ -79,58 +87,62 @@ html = """
 <meta charset="UTF-8">
 <title>Greece Shorts Leaderboard</title>
 <style>
-
 body{
     font-family: Arial;
     background:#0f172a;
     color:white;
     text-align:center;
 }
-
 h1{
     margin-top:40px;
 }
-
+.container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:30px;
+    align-items:flex-start;
+}
 table{
-    margin:auto;
     border-collapse:collapse;
-    width:60%;
     background:#1e293b;
 }
-
 th, td{
-    padding:10px;
+    padding:8px 12px;
     border-bottom:1px solid #334155;
 }
-
 th{
     background:#334155;
 }
-
 tr:hover{
     background:#475569;
 }
-
 .rank1{color:gold;font-weight:bold;}
 .rank2{color:silver;font-weight:bold;}
 .rank3{color:#cd7f32;font-weight:bold;}
 
+/* Max Points table specific */
+.maxpoints-table{
+    min-width:180px;
+    font-size:0.9em;
+}
+.maxpoints-table th{
+    background:#334155;
+}
+.maxpoints-table tr:hover{
+    background:#475569;
+}
 </style>
 </head>
-
 <body>
-
 <h1>🏆 Greece Shorts Leaderboard</h1>
+<div class="container">
 
+<!-- Main leaderboard -->
 <table>
-<tr>
-<th>Rank</th>
-<th>Player</th>
-<th>Weeks Won</th>
-<th>Map Wins</th>
-<th>Top5</th>
-</tr>
+<tr><th>Rank</th><th>Player</th><th>Weeks Won</th><th>Map Wins</th><th>Top5</th></tr>
 """
+
 ranking = sorted(
     players,
     key=lambda p: (week_wins[p], map_wins[p], top5[p]),
@@ -138,32 +150,29 @@ ranking = sorted(
 )
 
 for i, p in enumerate(ranking, start=1):
-
     rank_class = ""
-    if i == 1:
-        rank_class = "rank1"
-    elif i == 2:
-        rank_class = "rank2"
-    elif i == 3:
-        rank_class = "rank3"
+    if i == 1: rank_class = "rank1"
+    elif i == 2: rank_class = "rank2"
+    elif i == 3: rank_class = "rank3"
+    html += f"<tr class='{rank_class}'><td>{i}</td><td>{p}</td><td>{week_wins[p]}</td><td>{map_wins[p]}</td><td>{top5[p]}</td></tr>\n"
 
-    html += f"""
-<tr class="{rank_class}">
-<td>{i}</td>
-<td>{p}</td>
-<td>{week_wins[p]}</td>
-<td>{map_wins[p]}</td>
-<td>{top5[p]}</td>
-</tr>
+html += "</table>"
+
+# Max Points table (smaller, styled like main leaderboard, now numbered)
+html += """
+<table class="maxpoints-table">
+<tr><th>Rank</th><th>Player</th><th>Max Points</th></tr>
 """
+
+for i, (player, points) in enumerate(sorted(max_points.items(), key=lambda x: x[1], reverse=True), start=1):
+    rank_class = ""
+    if i == 1: rank_class = "rank1"
+    elif i == 2: rank_class = "rank2"
+    elif i == 3: rank_class = "rank3"
+    html += f"<tr class='{rank_class}'><td>{i}</td><td>{player}</td><td>{points}</td></tr>\n"
 
 html += """
 </table>
-
-<p style="margin-top:40px;">Updated automatically</p>
-
-</body>
-</html>
 """
 
 with open("index.html","w",encoding="utf-8") as f:
