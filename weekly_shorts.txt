@@ -1214,7 +1214,7 @@ Map5:
 4.REVTEXA
 5.KOSTAS2047
 
-Week 39 Winner PlayerB
+Week 39 Winner CETREXE.
 Map1:
 1.BABOURAS2001
 2.CETREXE.
@@ -2045,3 +2045,35 @@ Map5:
 3.PEROLOCO
 4.AARONA_AARANSON
 5.KOMATM
+
+Week 65 Winner PlayerC
+Map1:
+1.PlayerC
+2.PlayerB
+3.PlayerA
+4.PlayerE
+5.PlayerD
+Map2:
+1.PlayerC
+2.PlayerB
+3.PlayerA
+4.PlayerE
+5.PlayerD
+Map3:
+1.PlayerC
+2.PlayerB
+3.PlayerA
+4.PlayerE
+5.PlayerD
+Map4:
+1.PlayerB
+2.PlayerC
+3.PlayerA
+4.PlayerD
+5.PlayerE
+Map5:
+1.PlayerA
+2.PlayerB
+3.PlayerC
+4.PlayerD
+5.PlayerE
