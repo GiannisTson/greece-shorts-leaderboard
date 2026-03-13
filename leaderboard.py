@@ -154,7 +154,7 @@ tr:hover{
 </style>
 </head>
 <body>
-<h1>🏆 Greece Shorts Leaderboard</h1>
+<h1>🏆 Greece Weekly Shorts Leaderboard</h1>
 <div class="container">
 
 <!-- Main leaderboard -->
