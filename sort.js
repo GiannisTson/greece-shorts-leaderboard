@@ -1,18 +1,30 @@
-let sortDirection = {};
+let sortDirection = {};  // tracks sorting direction
+let initialRows = [];    // store initial table order
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Store the original order
+    const tbody = document.querySelector("#leaderboard tbody");
+    initialRows = Array.from(tbody.rows);
+});
 
 function sortTable(colIndex){
-
     const table = document.getElementById("leaderboard");
-    const headers = table.querySelectorAll("th");
-    const arrows = table.querySelectorAll(".sort-arrow");
-
     const tbody = table.tBodies[0];
-    const rows = Array.from(tbody.rows);
 
+    // If Weeks Won column is clicked (index 2), reset to original order
+    if(colIndex === 2){
+        initialRows.forEach(row => tbody.appendChild(row));
+        updateRanks();
+        updateArrows(null); // remove arrows
+        return;
+    }
+
+    // Toggle sort direction for other columns
     sortDirection[colIndex] = !sortDirection[colIndex];
 
-    rows.sort((a,b)=>{
+    const rows = Array.from(tbody.rows);
 
+    rows.sort((a, b) => {
         let A = a.cells[colIndex].innerText;
         let B = b.cells[colIndex].innerText;
 
@@ -27,39 +39,30 @@ function sortTable(colIndex){
     });
 
     rows.forEach(row => tbody.appendChild(row));
-
     updateRanks();
     updateArrows(colIndex);
 }
 
-function updateArrows(activeCol){
-
-    document.querySelectorAll(".sort-arrow").forEach(a=>{
-        a.innerText = "▲▼";
-    });
-
-    const header = document.querySelectorAll("#leaderboard th")[activeCol];
-    const arrow = header.querySelector(".sort-arrow");
-
-    if(!arrow) return;
-
-    arrow.innerText = sortDirection[activeCol] ? "▲" : "▼";
-}
-
 function updateRanks(){
-
-    const table = document.getElementById("leaderboard");
-    const rows = table.tBodies[0].rows;
-
-    for(let i=0;i<rows.length;i++){
-
-        const rankCell = rows[i].cells[0];
+    const rows = document.querySelectorAll("#leaderboard tbody tr");
+    rows.forEach((row, i) => {
+        const rankCell = row.cells[0];
         rankCell.innerText = i + 1;
 
-        rows[i].classList.remove("rank1","rank2","rank3");
+        row.classList.remove("rank1","rank2","rank3");
+        if(i===0) row.classList.add("rank1");
+        if(i===1) row.classList.add("rank2");
+        if(i===2) row.classList.add("rank3");
+    });
+}
 
-        if(i===0) rows[i].classList.add("rank1");
-        if(i===1) rows[i].classList.add("rank2");
-        if(i===2) rows[i].classList.add("rank3");
+function updateArrows(activeCol){
+    const arrows = document.querySelectorAll(".sort-arrow");
+    arrows.forEach(a => a.innerText = "▲▼");
+    if(activeCol === null) return; // nothing active
+    const header = document.querySelectorAll("#leaderboard th")[activeCol];
+    const arrow = header.querySelector(".sort-arrow");
+    if(arrow){
+        arrow.innerText = sortDirection[activeCol] ? "▲" : "▼";
     }
 }

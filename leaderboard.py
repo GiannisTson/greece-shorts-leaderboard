@@ -170,6 +170,19 @@ tr:hover{
     border:1px solid #334155;
 }
 
+.refresh-icon svg {
+    vertical-align: middle;
+    margin-left: 4px;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.refresh-icon svg:hover {
+    transform: rotate(20deg);
+    opacity: 1;
+}
+
 /* Max Points table specific */
 .maxpoints-table{
     min-width:180px;
@@ -193,7 +206,15 @@ tr:hover{
 <tr>
 <th>Rank</th>
 <th>Player</th>
-<th onclick="sortTable(2)">Weeks Won <span class="sort-arrow">▲▼</span></th>
+<th onclick="sortTable(2)" title="Reset leaderboard to original ranking">
+  Weeks Won
+  <span class="refresh-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="23 4 23 10 17 10"></polyline>
+      <path d="M20.49 15a9 9 0 1 1-2.21-9.79"></path>
+    </svg>
+  </span>
+</th>
 <th onclick="sortTable(3)" class="tooltip" data-tooltip="Total #1 Greece finishes on maps">Greece Records <span class="sort-arrow">▲▼</span></th>
 <th onclick="sortTable(4)" class="tooltip" data-tooltip="Total top5 Greece finishes on maps">Top5 <span class="sort-arrow">▲▼</span></th>
 </tr>

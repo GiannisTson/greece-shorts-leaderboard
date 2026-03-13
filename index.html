@@ -72,6 +72,19 @@ tr:hover{
     border:1px solid #334155;
 }
 
+.refresh-icon svg {
+    vertical-align: middle;
+    margin-left: 4px;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.refresh-icon svg:hover {
+    transform: rotate(20deg);
+    opacity: 1;
+}
+
 /* Max Points table specific */
 .maxpoints-table{
     min-width:180px;
@@ -95,7 +108,15 @@ tr:hover{
 <tr>
 <th>Rank</th>
 <th>Player</th>
-<th onclick="sortTable(2)">Weeks Won <span class="sort-arrow">▲▼</span></th>
+<th onclick="sortTable(2)" title="Reset leaderboard to original ranking">
+  Weeks Won
+  <span class="refresh-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="23 4 23 10 17 10"></polyline>
+      <path d="M20.49 15a9 9 0 1 1-2.21-9.79"></path>
+    </svg>
+  </span>
+</th>
 <th onclick="sortTable(3)" class="tooltip" data-tooltip="Total #1 Greece finishes on maps">Greece Records <span class="sort-arrow">▲▼</span></th>
 <th onclick="sortTable(4)" class="tooltip" data-tooltip="Total top5 Greece finishes on maps">Top5 <span class="sort-arrow">▲▼</span></th>
 </tr>
@@ -146,129 +167,129 @@ tr:hover{
 <tr class=''><td>43</td><td>TASUKEE</td><td>0</td><td>1</td><td>6</td></tr>
 <tr class=''><td>44</td><td>MIKROSANTHROPOS</td><td>0</td><td>1</td><td>5</td></tr>
 <tr class=''><td>45</td><td>ARTE__</td><td>0</td><td>1</td><td>4</td></tr>
-<tr class=''><td>46</td><td>DEVO_GR</td><td>0</td><td>1</td><td>3</td></tr>
-<tr class=''><td>47</td><td>GREEKPRO117</td><td>0</td><td>1</td><td>3</td></tr>
-<tr class=''><td>48</td><td>GIAKJOHN07</td><td>0</td><td>1</td><td>3</td></tr>
-<tr class=''><td>49</td><td>ELUSIVERIOS</td><td>0</td><td>1</td><td>3</td></tr>
-<tr class=''><td>50</td><td>SNOWPIERCER_INC</td><td>0</td><td>1</td><td>3</td></tr>
+<tr class=''><td>46</td><td>GREEKPRO117</td><td>0</td><td>1</td><td>3</td></tr>
+<tr class=''><td>47</td><td>GIAKJOHN07</td><td>0</td><td>1</td><td>3</td></tr>
+<tr class=''><td>48</td><td>DEVO_GR</td><td>0</td><td>1</td><td>3</td></tr>
+<tr class=''><td>49</td><td>SNOWPIERCER_INC</td><td>0</td><td>1</td><td>3</td></tr>
+<tr class=''><td>50</td><td>ELUSIVERIOS</td><td>0</td><td>1</td><td>3</td></tr>
 <tr class=''><td>51</td><td>AGGELOS_12W</td><td>0</td><td>1</td><td>2</td></tr>
 <tr class=''><td>52</td><td>DIMOPLOKI</td><td>0</td><td>1</td><td>1</td></tr>
-<tr class=''><td>53</td><td>F1MIN</td><td>0</td><td>1</td><td>1</td></tr>
-<tr class=''><td>54</td><td>TAMORATOR12</td><td>0</td><td>1</td><td>1</td></tr>
-<tr class=''><td>55</td><td>POWERDIM</td><td>0</td><td>1</td><td>1</td></tr>
-<tr class=''><td>56</td><td>TARMALTTV</td><td>0</td><td>1</td><td>1</td></tr>
+<tr class=''><td>53</td><td>TAMORATOR12</td><td>0</td><td>1</td><td>1</td></tr>
+<tr class=''><td>54</td><td>POWERDIM</td><td>0</td><td>1</td><td>1</td></tr>
+<tr class=''><td>55</td><td>OSVERKOS</td><td>0</td><td>1</td><td>1</td></tr>
+<tr class=''><td>56</td><td>REVIVEDCASTLE61</td><td>0</td><td>1</td><td>1</td></tr>
 <tr class=''><td>57</td><td>BILLARAS2212</td><td>0</td><td>1</td><td>1</td></tr>
-<tr class=''><td>58</td><td>OSVERKOS</td><td>0</td><td>1</td><td>1</td></tr>
-<tr class=''><td>59</td><td>REVIVEDCASTLE61</td><td>0</td><td>1</td><td>1</td></tr>
+<tr class=''><td>58</td><td>F1MIN</td><td>0</td><td>1</td><td>1</td></tr>
+<tr class=''><td>59</td><td>TARMALTTV</td><td>0</td><td>1</td><td>1</td></tr>
 <tr class=''><td>60</td><td>YOLOMAZER</td><td>0</td><td>0</td><td>12</td></tr>
 <tr class=''><td>61</td><td>EIRC</td><td>0</td><td>0</td><td>10</td></tr>
 <tr class=''><td>62</td><td>GIGAXLEO</td><td>0</td><td>0</td><td>9</td></tr>
 <tr class=''><td>63</td><td>KOSTASBORIS</td><td>0</td><td>0</td><td>7</td></tr>
-<tr class=''><td>64</td><td>MNIKO_MICHAEL</td><td>0</td><td>0</td><td>5</td></tr>
-<tr class=''><td>65</td><td>AARONA_AARANSON</td><td>0</td><td>0</td><td>5</td></tr>
-<tr class=''><td>66</td><td>S_DEATHSTROKE</td><td>0</td><td>0</td><td>4</td></tr>
+<tr class=''><td>64</td><td>AARONA_AARANSON</td><td>0</td><td>0</td><td>5</td></tr>
+<tr class=''><td>65</td><td>MNIKO_MICHAEL</td><td>0</td><td>0</td><td>5</td></tr>
+<tr class=''><td>66</td><td>SERAFEEIIM</td><td>0</td><td>0</td><td>4</td></tr>
 <tr class=''><td>67</td><td>KGT93</td><td>0</td><td>0</td><td>4</td></tr>
 <tr class=''><td>68</td><td>TIDHS</td><td>0</td><td>0</td><td>4</td></tr>
 <tr class=''><td>69</td><td>MBAG34</td><td>0</td><td>0</td><td>4</td></tr>
-<tr class=''><td>70</td><td>GHOSTGAMER533</td><td>0</td><td>0</td><td>4</td></tr>
-<tr class=''><td>71</td><td>SERAFEEIIM</td><td>0</td><td>0</td><td>4</td></tr>
+<tr class=''><td>70</td><td>S_DEATHSTROKE</td><td>0</td><td>0</td><td>4</td></tr>
+<tr class=''><td>71</td><td>GHOSTGAMER533</td><td>0</td><td>0</td><td>4</td></tr>
 <tr class=''><td>72</td><td>LONETM.</td><td>0</td><td>0</td><td>3</td></tr>
-<tr class=''><td>73</td><td>TASHOWS</td><td>0</td><td>0</td><td>3</td></tr>
-<tr class=''><td>74</td><td>ATHENSBYNAME</td><td>0</td><td>0</td><td>3</td></tr>
-<tr class=''><td>75</td><td>SAINTZIZIZ</td><td>0</td><td>0</td><td>3</td></tr>
-<tr class=''><td>76</td><td>LIAMS825</td><td>0</td><td>0</td><td>3</td></tr>
-<tr class=''><td>77</td><td>FORMI_TM</td><td>0</td><td>0</td><td>3</td></tr>
-<tr class=''><td>78</td><td>PETROLIS2020</td><td>0</td><td>0</td><td>3</td></tr>
-<tr class=''><td>79</td><td>SORONTILAS</td><td>0</td><td>0</td><td>3</td></tr>
-<tr class=''><td>80</td><td>SVENTZ2042</td><td>0</td><td>0</td><td>3</td></tr>
-<tr class=''><td>81</td><td>DRUNKEN_DGL</td><td>0</td><td>0</td><td>3</td></tr>
-<tr class=''><td>82</td><td>N0UNIS</td><td>0</td><td>0</td><td>3</td></tr>
-<tr class=''><td>83</td><td>PODOLAGNOS_TM</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>84</td><td>DENDENMUSH111</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>85</td><td>MILOEMILIOS</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>86</td><td>BRUHGAMER6942</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>87</td><td>IGEQRGE_</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>88</td><td>PANAGIOMIXALO</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>89</td><td>NEDAROT</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>90</td><td>ANAGNOMAN</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>91</td><td>BAGGIEHUNTER</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>73</td><td>ATHENSBYNAME</td><td>0</td><td>0</td><td>3</td></tr>
+<tr class=''><td>74</td><td>DRUNKEN_DGL</td><td>0</td><td>0</td><td>3</td></tr>
+<tr class=''><td>75</td><td>SORONTILAS</td><td>0</td><td>0</td><td>3</td></tr>
+<tr class=''><td>76</td><td>PETROLIS2020</td><td>0</td><td>0</td><td>3</td></tr>
+<tr class=''><td>77</td><td>SVENTZ2042</td><td>0</td><td>0</td><td>3</td></tr>
+<tr class=''><td>78</td><td>N0UNIS</td><td>0</td><td>0</td><td>3</td></tr>
+<tr class=''><td>79</td><td>SAINTZIZIZ</td><td>0</td><td>0</td><td>3</td></tr>
+<tr class=''><td>80</td><td>TASHOWS</td><td>0</td><td>0</td><td>3</td></tr>
+<tr class=''><td>81</td><td>LIAMS825</td><td>0</td><td>0</td><td>3</td></tr>
+<tr class=''><td>82</td><td>FORMI_TM</td><td>0</td><td>0</td><td>3</td></tr>
+<tr class=''><td>83</td><td>PANAGIOMIXALO</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>84</td><td>IMAFRAID0FWOMEN</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>85</td><td>SANSTM</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>86</td><td>NICKOSWALD8</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>87</td><td>MULONK</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>88</td><td>ANAGNOMAN</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>89</td><td>STOUSIS</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>90</td><td>BRUHGAMER6942</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>91</td><td>DENDENMUSH111</td><td>0</td><td>0</td><td>2</td></tr>
 <tr class=''><td>92</td><td>ITZRAFF</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>93</td><td>SANSTM</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>94</td><td>IMAFRAID0FWOMEN</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>95</td><td>M1CHAELTHEM</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>96</td><td>STOUSIS</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>97</td><td>L0X38</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>98</td><td>MULONK</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>99</td><td>FASAIIA</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>100</td><td>IMSWETY213</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>101</td><td>NICKOSWALD8</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>102</td><td>CRAZYBEAMZ</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>103</td><td>OOFER1278</td><td>0</td><td>0</td><td>2</td></tr>
-<tr class=''><td>104</td><td>FGPALEX</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>105</td><td>NIKOSTHEGREAT3</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>106</td><td>CHRISROCKETLIFE</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>107</td><td>NINJAMNT</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>108</td><td>BLUE_ROBOT28</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>109</td><td>STEELATORGR</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>110</td><td>THEONE-WHOWATCH</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>111</td><td>MERLINS2020</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>112</td><td>AREA511</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>113</td><td>GABRIELITO21XX</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>114</td><td>TWITCH_ROUMANOS</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>115</td><td>SIDOWHOGR</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>116</td><td>LITERALCOIN6235</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>117</td><td>JASONSTATHIS</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>118</td><td>XALIAONOMA</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>119</td><td>SPY_2069</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>120</td><td>GKONTI09</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>121</td><td>MIKELIFE01</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>122</td><td>M3_MERAKI</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>123</td><td>ZEROPOLECAT</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>124</td><td>WOW_ITS_GREGOIR</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>125</td><td>DYTIKO_LENTAS</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>126</td><td>ANTONIADIS05</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>127</td><td>MIKER978</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>128</td><td>FLOWV6</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>129</td><td>CYTRUSS.</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>130</td><td>PARLAPISG7</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>131</td><td>CHRIS709PRO</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>132</td><td>FOOMII12</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>133</td><td>GIANNIS1245</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>134</td><td>KR4TISTOS</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>135</td><td>KAKURITSU_</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>136</td><td>XBATMAN_</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>137</td><td>CURABIEDO</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>138</td><td>GOKITS</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>139</td><td>ARCHIDAMUS12</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>140</td><td>JHHHVJGGH</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>141</td><td>STAUROULIAKAS22</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>142</td><td>PURETOASTERBATH</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>143</td><td>VORTEXTHEGREEK</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>144</td><td>KAGKOURASCOM</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>145</td><td>WHODISBERRY</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>146</td><td>FRAGSKUNK</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>147</td><td>MYKONOOS</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>148</td><td>ZHKOSS</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>149</td><td>DARKHEN124</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>150</td><td>BITER-TM</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>151</td><td>THEBIGBANG_23</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>152</td><td>SQUIDIPUS2005</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>153</td><td>ALEKUBAS</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>154</td><td>SOKKILEDU</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>155</td><td>CAHOCACHI</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>156</td><td>GOD_IS_MARIJUAN</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>157</td><td>SPYPAP</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>158</td><td>PANROUSIS21</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>159</td><td>PLMANOSSS</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>160</td><td>GODANAG</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>161</td><td>KIRINIK</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>162</td><td>MPOUROUXIS</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>163</td><td>IMTOXENA</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>164</td><td>DAZZLEDPOG</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>165</td><td>GREGORTM</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>166</td><td>DRMIYAGIS</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>167</td><td>ANTIUNIVERSE</td><td>0</td><td>0</td><td>1</td></tr>
-<tr class=''><td>168</td><td>KOASTY.</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>93</td><td>CRAZYBEAMZ</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>94</td><td>BAGGIEHUNTER</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>95</td><td>IGEQRGE_</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>96</td><td>PODOLAGNOS_TM</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>97</td><td>IMSWETY213</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>98</td><td>FASAIIA</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>99</td><td>M1CHAELTHEM</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>100</td><td>MILOEMILIOS</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>101</td><td>NEDAROT</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>102</td><td>OOFER1278</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>103</td><td>L0X38</td><td>0</td><td>0</td><td>2</td></tr>
+<tr class=''><td>104</td><td>KAKURITSU_</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>105</td><td>CAHOCACHI</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>106</td><td>WOW_ITS_GREGOIR</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>107</td><td>SIDOWHOGR</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>108</td><td>SOKKILEDU</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>109</td><td>DRMIYAGIS</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>110</td><td>ZEROPOLECAT</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>111</td><td>IMTOXENA</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>112</td><td>JHHHVJGGH</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>113</td><td>XBATMAN_</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>114</td><td>GIANNIS1245</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>115</td><td>STEELATORGR</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>116</td><td>CYTRUSS.</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>117</td><td>DAZZLEDPOG</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>118</td><td>SPY_2069</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>119</td><td>MPOUROUXIS</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>120</td><td>STAUROULIAKAS22</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>121</td><td>PARLAPISG7</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>122</td><td>FGPALEX</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>123</td><td>SQUIDIPUS2005</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>124</td><td>XALIAONOMA</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>125</td><td>GABRIELITO21XX</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>126</td><td>TWITCH_ROUMANOS</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>127</td><td>ZHKOSS</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>128</td><td>WHODISBERRY</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>129</td><td>GKONTI09</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>130</td><td>ANTONIADIS05</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>131</td><td>ALEKUBAS</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>132</td><td>NINJAMNT</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>133</td><td>M3_MERAKI</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>134</td><td>BITER-TM</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>135</td><td>KAGKOURASCOM</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>136</td><td>PLMANOSSS</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>137</td><td>FRAGSKUNK</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>138</td><td>CURABIEDO</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>139</td><td>PURETOASTERBATH</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>140</td><td>KR4TISTOS</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>141</td><td>PANROUSIS21</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>142</td><td>MYKONOOS</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>143</td><td>FOOMII12</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>144</td><td>ARCHIDAMUS12</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>145</td><td>BLUE_ROBOT28</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>146</td><td>GODANAG</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>147</td><td>LITERALCOIN6235</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>148</td><td>GOD_IS_MARIJUAN</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>149</td><td>CHRIS709PRO</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>150</td><td>GREGORTM</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>151</td><td>FLOWV6</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>152</td><td>DYTIKO_LENTAS</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>153</td><td>AREA511</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>154</td><td>MERLINS2020</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>155</td><td>MIKELIFE01</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>156</td><td>THEONE-WHOWATCH</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>157</td><td>MIKER978</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>158</td><td>VORTEXTHEGREEK</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>159</td><td>SPYPAP</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>160</td><td>JASONSTATHIS</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>161</td><td>THEBIGBANG_23</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>162</td><td>DARKHEN124</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>163</td><td>ANTIUNIVERSE</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>164</td><td>NIKOSTHEGREAT3</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>165</td><td>KOASTY.</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>166</td><td>KIRINIK</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>167</td><td>GOKITS</td><td>0</td><td>0</td><td>1</td></tr>
+<tr class=''><td>168</td><td>CHRISROCKETLIFE</td><td>0</td><td>0</td><td>1</td></tr>
 
 </tbody>
 </table>
