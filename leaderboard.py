@@ -36,22 +36,19 @@ for line in lines:
 players = set(list(week_wins.keys()) + list(map_wins.keys()) + list(top5.keys()))
 
 # ---------- Read Max Points from separate file ----------
-# ---------- Read Max Points from separate file ----------
 max_points_file = "max_points.txt"
-max_points = {}        # player → points
-max_points_week = {}   # player → week number
+max_points = {}
+max_points_week = {}
 
 with open(max_points_file, "r", encoding="utf-8") as f:
     for line in f:
         line = line.strip()
         if not line:
             continue
-        # Expect format: PLAYER POINTS (week N)
         try:
             if '(' in line and ')' in line:
                 main, week_part = line.split('(', 1)
-                week_part = week_part.replace(')','').strip()  # e.g., "week 53"
-                # Extract only the number
+                week_part = week_part.replace(')','').strip()
                 week_num = ''.join(filter(str.isdigit, week_part))
             else:
                 main = line
@@ -62,7 +59,7 @@ with open(max_points_file, "r", encoding="utf-8") as f:
             points = int(parts[1])
             
             max_points[player] = points
-            max_points_week[player] = week_num  # store only the number
+            max_points_week[player] = week_num
         except Exception as e:
             print(f"Failed to parse line: {line} ({e})")
 
@@ -132,6 +129,7 @@ th, td{
 }
 th{
     background:#334155;
+    cursor:pointer;
 }
 tr:hover{
     background:#475569;
@@ -139,6 +137,38 @@ tr:hover{
 .rank1{color:gold;font-weight:bold;}
 .rank2{color:silver;font-weight:bold;}
 .rank3{color:#cd7f32;font-weight:bold;}
+
+.sort-arrow{
+    font-size:0.7em;
+    opacity:0.7;
+    margin-left:4px;
+}
+
+.tooltip{
+    position:relative;
+}
+
+.tooltip-icon svg{
+    vertical-align: middle;
+    margin-left: 4px;
+    opacity:0.8;
+    cursor: pointer;
+}
+
+.tooltip:hover::after{
+    content:attr(data-tooltip);
+    position:absolute;
+    bottom:120%;
+    left:50%;
+    transform:translateX(-50%);
+    background:#020617;
+    color:white;
+    padding:6px 8px;
+    font-size:0.8em;
+    border-radius:6px;
+    white-space:nowrap;
+    border:1px solid #334155;
+}
 
 /* Max Points table specific */
 .maxpoints-table{
@@ -158,8 +188,17 @@ tr:hover{
 <div class="container">
 
 <!-- Main leaderboard -->
-<table>
-<tr><th>Rank</th><th>Player</th><th>Weeks Won</th><th>Map Wins</th><th>Top5</th></tr>
+<table id="leaderboard">
+<thead>
+<tr>
+<th>Rank</th>
+<th>Player</th>
+<th onclick="sortTable(2)">Weeks Won <span class="sort-arrow">▲▼</span></th>
+<th onclick="sortTable(3)" class="tooltip" data-tooltip="Total #1 Greece finishes on maps">Greece Records <span class="sort-arrow">▲▼</span></th>
+<th onclick="sortTable(4)" class="tooltip" data-tooltip="Total top5 Greece finishes on maps">Top5 <span class="sort-arrow">▲▼</span></th>
+</tr>
+</thead>
+<tbody>
 """
 
 ranking = sorted(
@@ -175,29 +214,51 @@ for i, p in enumerate(ranking, start=1):
     elif i == 3: rank_class = "rank3"
     html += f"<tr class='{rank_class}'><td>{i}</td><td>{p}</td><td>{week_wins[p]}</td><td>{map_wins[p]}</td><td>{top5[p]}</td></tr>\n"
 
-html += "</table>"
-
-# Max Points table (numbered + week column)
 html += """
-<table class="maxpoints-table">
-<tr><th>Rank</th><th>Player</th><th>Max Points</th><th>Week</th></tr>
+</tbody>
+</table>
 """
 
-# Sort players by points descending
+# Max Points table
+html += """
+<table class="maxpoints-table">
+<tr>
+<th>Rank</th>
+<th>Player</th>
+<th>
+Max Points
+<span class="tooltip tooltip-icon" data-tooltip="Highest score achieved in a single week">
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="10"></circle>
+  <line x1="12" y1="16" x2="12" y2="12"></line>
+  <line x1="12" y1="8" x2="12" y2="8"></line>
+</svg>
+</span>
+</th>
+<th>Week</th>
+</tr>
+"""
+
 for i, (player, points) in enumerate(sorted(max_points.items(), key=lambda x: x[1], reverse=True), start=1):
     rank_class = ""
     if i == 1: rank_class = "rank1"
     elif i == 2: rank_class = "rank2"
     elif i == 3: rank_class = "rank3"
     
-    week_str = max_points_week.get(player, "")  # Get week from dictionary
+    week_str = max_points_week.get(player, "")
     html += f"<tr class='{rank_class}'><td>{i}</td><td>{player}</td><td>{points}</td><td>{week_str}</td></tr>\n"
 
 html += """
 </table>
+
+</div>
+
+<script src="sort.js"></script>
+
+</body>
+</html>
 """
 
-# Write final HTML
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html)
 
