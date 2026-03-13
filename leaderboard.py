@@ -36,16 +36,35 @@ for line in lines:
 players = set(list(week_wins.keys()) + list(map_wins.keys()) + list(top5.keys()))
 
 # ---------- Read Max Points from separate file ----------
+# ---------- Read Max Points from separate file ----------
+max_points_file = "max_points.txt"
+max_points = {}        # player → points
+max_points_week = {}   # player → week number
+
 with open(max_points_file, "r", encoding="utf-8") as f:
     for line in f:
         line = line.strip()
         if not line:
             continue
-        parts = line.split()
-        if len(parts) >= 2:
+        # Expect format: PLAYER POINTS (week N)
+        try:
+            if '(' in line and ')' in line:
+                main, week_part = line.split('(', 1)
+                week_part = week_part.replace(')','').strip()  # e.g., "week 53"
+                # Extract only the number
+                week_num = ''.join(filter(str.isdigit, week_part))
+            else:
+                main = line
+                week_num = ""
+            
+            parts = main.strip().split()
             player = parts[0]
             points = int(parts[1])
+            
             max_points[player] = points
+            max_points_week[player] = week_num  # store only the number
+        except Exception as e:
+            print(f"Failed to parse line: {line} ({e})")
 
 # ---------- Console leaderboard ----------
 print("\nLEADERBOARD\n")
@@ -158,24 +177,28 @@ for i, p in enumerate(ranking, start=1):
 
 html += "</table>"
 
-# Max Points table (smaller, styled like main leaderboard, now numbered)
+# Max Points table (numbered + week column)
 html += """
 <table class="maxpoints-table">
-<tr><th>Rank</th><th>Player</th><th>Max Points</th></tr>
+<tr><th>Rank</th><th>Player</th><th>Max Points</th><th>Week</th></tr>
 """
 
+# Sort players by points descending
 for i, (player, points) in enumerate(sorted(max_points.items(), key=lambda x: x[1], reverse=True), start=1):
     rank_class = ""
     if i == 1: rank_class = "rank1"
     elif i == 2: rank_class = "rank2"
     elif i == 3: rank_class = "rank3"
-    html += f"<tr class='{rank_class}'><td>{i}</td><td>{player}</td><td>{points}</td></tr>\n"
+    
+    week_str = max_points_week.get(player, "")  # Get week from dictionary
+    html += f"<tr class='{rank_class}'><td>{i}</td><td>{player}</td><td>{points}</td><td>{week_str}</td></tr>\n"
 
 html += """
 </table>
 """
 
-with open("index.html","w",encoding="utf-8") as f:
+# Write final HTML
+with open("index.html", "w", encoding="utf-8") as f:
     f.write(html)
 
 print("HTML leaderboard generated → index.html")
